@@ -46,20 +46,12 @@ public class GamePanel extends JPanel implements IPanel {
 		System.out.println("JPanel 'GamePanel' was created successfully.");
 	}
 
-	// Getters and Setters for testing-purposes
+	// Getters
 	public int getmWidth() {
 		return mWidth;
 	}
 
-	public void setmWidth(int mWidth) {
-		this.mWidth = mWidth;
-	}
-
 	public int getmHeight() {
 		return mHeight;
-	}
-
-	public void setmHeight(int mHeight) {
-		this.mHeight = mHeight;
 	}
 }
