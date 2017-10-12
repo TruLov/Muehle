@@ -61,6 +61,36 @@ public class Window extends JFrame implements IWindow {
 	 * 
 	 * Chain to Main-Constructor
 	 * 
+	 * @param sizeIn
+	 *            size of width and height
+	 * @param titleIn
+	 *            window-title
+	 * 
+	 */
+	public Window(int sizeIn, String titleIn) {
+
+		this(sizeIn, sizeIn, titleIn);
+	}
+
+	/**
+	 * Constructor
+	 * 
+	 * Chain to Main-Constructor
+	 * 
+	 * @param sizeIn
+	 *            size of width and height
+	 * 
+	 */
+	public Window(int sizeIn) {
+
+		this(sizeIn, sizeIn, "Mühle");
+	}
+
+	/**
+	 * Constructor
+	 * 
+	 * Chain to Main-Constructor
+	 * 
 	 * @param titleIn
 	 *            window-title
 	 * 
@@ -78,6 +108,16 @@ public class Window extends JFrame implements IWindow {
 	 */
 	public Window() {
 
-		this(DEFAULT_WIDTH, DEFAULT_HEIGHT, "M�hle");
+		this(DEFAULT_WIDTH, DEFAULT_HEIGHT, "Mühle");
 	}
+
+	// Getters, mainly for testing purposes
+	public int getmWidth() {
+		return mWidth;
+	}
+
+	public int getmHeight() {
+		return mHeight;
+	}
+
 }
