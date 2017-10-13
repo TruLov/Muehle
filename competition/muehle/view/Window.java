@@ -15,6 +15,8 @@ import javax.swing.JFrame;
 public class Window extends JFrame implements IWindow {
 
 	private static final long serialVersionUID = 1L;
+	
+	private LogPanel logger;
 
 	private static final int DEFAULT_WIDTH = 500;
 	private static final int DEFAULT_HEIGHT = DEFAULT_WIDTH;
@@ -38,7 +40,7 @@ public class Window extends JFrame implements IWindow {
 	 */
 	public Window(int widthIn, int heightIn, String titleIn) {
 
-		System.out.println("Creating JFrame 'Window'...");
+		//System.out.println("Creating JFrame 'Window'...");
 
 		this.mWidth = widthIn;
 		this.mHeight = heightIn;
@@ -49,11 +51,13 @@ public class Window extends JFrame implements IWindow {
 		setLocationRelativeTo(null);
 
 		// pack frame with panel and sets it visible
-		setContentPane(new GamePanel(mWidth, mHeight));
+		logger = new LogPanel(600, 100);
+		setContentPane(logger);
+		logger.log("Logger created...");
 		pack();
 		setVisible(true);
 
-		System.out.println("JFrame 'Window' was created successfully.");
+		logger.log("JFrame 'Window' was created successfully...");
 	}
 
 	/**
@@ -78,6 +82,6 @@ public class Window extends JFrame implements IWindow {
 	 */
 	public Window() {
 
-		this(DEFAULT_WIDTH, DEFAULT_HEIGHT, "Mühle");
+		this(DEFAULT_WIDTH, DEFAULT_HEIGHT, "Mï¿½hle");
 	}
 }
