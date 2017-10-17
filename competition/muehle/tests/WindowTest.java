@@ -33,7 +33,7 @@ public class WindowTest {
 	 */
 	@Test
 	public final void testWindowIntString() {
-		assertEquals(44, new Window(44, "testWindowIntString").getmWidth());
+		assertEquals(44, new Window(44, "testWindowIntString").getmHeight());
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class WindowTest {
 	 */
 	@Test
 	public final void testWindowString() {
-		assertEquals(500, new Window("testWindowIntString").getmWidth());
+		assertEquals(600, new Window("testWindowIntString").getmWidth());
 	}
 
 	/**
@@ -58,6 +58,6 @@ public class WindowTest {
 	 */
 	@Test
 	public final void testWindow() {
-		assertEquals(500, new Window().getmWidth());
+		assertEquals(600, new Window().getmWidth());
 	}
 }

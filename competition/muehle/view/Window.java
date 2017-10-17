@@ -1,5 +1,8 @@
 package competition.muehle.view;
 
+import java.awt.Image;
+import java.awt.Toolkit;
+
 import javax.swing.JFrame;
 
 /**
@@ -12,12 +15,15 @@ import javax.swing.JFrame;
  * @category View
  * 
  */
-public class Window extends JFrame implements IWindow {
+public class Window extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int DEFAULT_WIDTH = 500;
-	private static final int DEFAULT_HEIGHT = DEFAULT_WIDTH;
+	private static final int DEFAULT_WIDTH = 600;
+	private static final int DEFAULT_HEIGHT = 500;
+
+	private static Image mGamePanelBackground = Toolkit.getDefaultToolkit()
+			.getImage("E:/Entwicklung/java-oxygen/eclipse/workspace/Mühle/src/competition/muehle/img/Muehle.png");
 
 	private int mWidth;
 	private int mHeight;
@@ -38,7 +44,7 @@ public class Window extends JFrame implements IWindow {
 	 */
 	public Window(int widthIn, int heightIn, String titleIn) {
 
-		System.out.println("Creating JFrame 'Window'...");
+		System.out.println("Creating JFrame...");
 
 		this.mWidth = widthIn;
 		this.mHeight = heightIn;
@@ -47,13 +53,14 @@ public class Window extends JFrame implements IWindow {
 		setTitle(titleIn);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
+		setResizable(false);
 
 		// pack frame with panel and sets it visible
-		setContentPane(new GamePanel(mWidth, mHeight));
+		setContentPane(new GamePanel(mWidth, mHeight, mGamePanelBackground));
 		pack();
 		setVisible(true);
 
-		System.out.println("JFrame 'Window' was created successfully.");
+		System.out.println("JFrame was created successfully.");
 	}
 
 	/**
