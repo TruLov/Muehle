@@ -22,7 +22,7 @@ public class Window extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	private static final int WINDOW_WIDTH = 600;
-	private static final int WINDOW_HEIGHT = 500;
+	private static final int WINDOW_HEIGHT = 510;
 	private static final int GAMEPANEL_HEIGHT = 400;
 	private static final int LOGPANEL_HEIGHT = 100;
 
