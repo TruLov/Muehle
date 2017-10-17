@@ -1,8 +1,11 @@
 package competition.muehle.view;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 /**
  * LogPanel class
@@ -10,15 +13,15 @@ import javax.swing.JTextArea;
  * @author trulof
  * @author jbreih
  * @category View
- *
+ * 
  */
 public class LogPanel extends Panel {
 
 	private static final long serialVersionUID = 1L;
 
 	static String mName = "LogPanel";
-	JTextArea mLogger;
-	JScrollPane mScroller;
+	JTextPane mTextPane;
+	JScrollPane mScrollPane;
 	JScrollBar bar;
 
 	/**
@@ -28,13 +31,16 @@ public class LogPanel extends Panel {
 	 *            panel-height
 	 */
 	public LogPanel(int widthIn, int heightIn) {
+
 		super(widthIn, heightIn, mName);
-		mLogger = new JTextArea(5, 47);
-		mLogger.setEditable(false);
 
-		mScroller = new JScrollPane(mLogger);
+		mTextPane = new JTextPane();
+		mTextPane.setEditable(false);
+		mScrollPane = new JScrollPane(mTextPane);
+		
+		mTextPane.setPreferredSize(new Dimension(mWidth-10, mHeight));
 
-		add(mScroller);
+		add(mScrollPane, BorderLayout.CENTER);
 	}
 
 	/**
@@ -43,8 +49,10 @@ public class LogPanel extends Panel {
 	 *            text to log
 	 */
 	public void log(String text) {
-		mLogger.insert(text + "\n", 0);
-		bar = mScroller.getVerticalScrollBar();
-		bar.setValue(bar.getMinimum());
+		mTextPane.setText(text + "\n");
+		
+//		mTextPane.insert(text + "\n", 0);
+//		bar = mScroller.getVerticalScrollBar();
+//		bar.setValue(bar.getMinimum());
 	}
 }
