@@ -23,6 +23,7 @@ public class Button extends JButton {
 		this.mColor = colorIn;
 
 		setContentAreaFilled(false);
+		setBorderPainted(false);
 		setColor(mColor);
 	}
 
