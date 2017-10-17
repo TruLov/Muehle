@@ -1,5 +1,7 @@
 package competition.muehle.view;
 
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -19,44 +21,48 @@ public class Window extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	private static final int DEFAULT_WIDTH = 600;
-	private static final int DEFAULT_HEIGHT = 500;
+	private static final int WINDOW_WIDTH = 600;
+	private static final int WINDOW_HEIGHT = 500;
+	private static final int GAMEPANEL_HEIGHT = 400;
+	private static final int LOGPANEL_HEIGHT = 100;
 
-	private static Image mGamePanelBackground = Toolkit.getDefaultToolkit()
-			.getImage("E:/Entwicklung/java-oxygen/eclipse/workspace/Mühle/src/competition/muehle/img/Muehle.png");
+	private static Image mGamePanelBackground = Toolkit
+			.getDefaultToolkit()
+			.getImage(
+					"/home/trulov/Downloads/Muehle-tom/competition/muehle/img/Muehle.png");
 
-	private int mWidth;
-	private int mHeight;
+	private GamePanel mGamePanel;
+	private LogPanel mLogPanel;
 
 	/**
-	 * Main-Constructor
+	 * Constructor
 	 * 
 	 * Basic JFrame-configuration, visibility-settings and initialization of the
 	 * member-variables.
 	 * 
-	 * @param widthIn
-	 *            window-width
-	 * @param heightIn
-	 *            window-height
 	 * @param titleIn
 	 *            window-title
 	 * 
 	 */
-	public Window(int widthIn, int heightIn, String titleIn) {
+	public Window() {
 
 		System.out.println("Creating JFrame...");
 
-		this.mWidth = widthIn;
-		this.mHeight = heightIn;
+		this.mGamePanel = new GamePanel(WINDOW_WIDTH, GAMEPANEL_HEIGHT,
+				mGamePanelBackground);
+		this.mLogPanel = new LogPanel(WINDOW_WIDTH, LOGPANEL_HEIGHT);
 
 		// standard configuration for JFrame
-		setTitle(titleIn);
+		setTitle("Mühle");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocationRelativeTo(null);
+		setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT));
 		setResizable(false);
 
 		// pack frame with panel and sets it visible
-		setContentPane(new GamePanel(mWidth, mHeight, mGamePanelBackground));
+		setLayout(new BorderLayout());
+		add(mGamePanel, BorderLayout.CENTER);
+		add(mLogPanel, BorderLayout.SOUTH);
+
 		pack();
 		setVisible(true);
 
@@ -64,67 +70,16 @@ public class Window extends JFrame {
 	}
 
 	/**
-	 * Constructor
-	 * 
-	 * Chain to Main-Constructor
-	 * 
-	 * @param sizeIn
-	 *            size of width and height
-	 * @param titleIn
-	 *            window-title
-	 * 
+	 * @return the mGamePanel
 	 */
-	public Window(int sizeIn, String titleIn) {
-
-		this(sizeIn, sizeIn, titleIn);
+	public GamePanel getmGamePanel() {
+		return mGamePanel;
 	}
 
 	/**
-	 * Constructor
-	 * 
-	 * Chain to Main-Constructor
-	 * 
-	 * @param sizeIn
-	 *            size of width and height
-	 * 
+	 * @return the mLogPanel
 	 */
-	public Window(int sizeIn) {
-
-		this(sizeIn, sizeIn, "Mühle");
+	public LogPanel getmLogPanel() {
+		return mLogPanel;
 	}
-
-	/**
-	 * Constructor
-	 * 
-	 * Chain to Main-Constructor
-	 * 
-	 * @param titleIn
-	 *            window-title
-	 * 
-	 */
-	public Window(String titleIn) {
-
-		this(DEFAULT_WIDTH, DEFAULT_HEIGHT, titleIn);
-	}
-
-	/**
-	 * Default-Constructor
-	 * 
-	 * Chain to Main-Constructor
-	 * 
-	 */
-	public Window() {
-
-		this(DEFAULT_WIDTH, DEFAULT_HEIGHT, "Mühle");
-	}
-
-	// Getters, mainly for testing purposes
-	public int getmWidth() {
-		return mWidth;
-	}
-
-	public int getmHeight() {
-		return mHeight;
-	}
-
 }
